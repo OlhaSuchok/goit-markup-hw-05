@@ -83,12 +83,6 @@ button {
 }
 
 .logotype,
-.studio:hover,
-.studio:focus,
-.portfolio:hover,
-.portfolio:focus,
-.contacts:hover,
-.contacts:focus,
 .link-footer:hover,
 .link-footer:focus,
 .link-footer.address:hover,
@@ -179,6 +173,26 @@ button {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.studio,
+.portfolio,
+.contacts {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.studio:hover,
+.studio:focus,
+.portfolio:hover,
+.portfolio:focus,
+.contacts:hover,
+.contacts:focus {
+  color: var(--nav-color);
 }
 
 .nav {
@@ -239,6 +253,34 @@ button {
   fill: #2196f3;
 }
 
+.studio::after,
+.portfolio::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 4px;
+  left: 0;
+  bottom: 0;
+  margin-bottom: -5px;
+  border-radius: 4px;
+  background-color: #2196f3;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.studio:hover .studio::after,
+.studio:focus .studio::after,
+.portfolio:hover .portfolio::after,
+.portfolio:focus .portfolio::after {
+  width: 100%;
+}
+
+.current::after {
+  width: 100%;
+}
+
 /* HERO */
 .section-hero {
   margin-right: auto;
@@ -281,6 +323,10 @@ button {
   line-height: 1.9;
   text-align: center;
   letter-spacing: 0.06em;
+
+  transition-property: color, background-color;
+  transition-duration: 250ms, 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-hero:hover,
@@ -292,6 +338,8 @@ button {
 .backdrop {
   position: fixed;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 100%;
@@ -299,6 +347,7 @@ button {
   opacity: 1;
   visibility: visible;
   transition: opacity 250ms linear, visibility 250ms linear;
+  z-index: 1;
 }
 
 .backdrop.is-hidden {
@@ -311,9 +360,9 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  background-color: var(--accent-color);
   min-width: 528px;
   min-height: 581px;
+  background-color: var(--accent-color);
   transform: translate(-50%, -50%) scale(1);
   transition: transform 250ms linear;
 }
@@ -335,6 +384,7 @@ button {
   background-color: inherit;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
+  cursor: pointer;
 }
 
 /* SECTION-CRITERIOS */
@@ -475,12 +525,16 @@ background-color: var(--accent-color);
   height: 44px;
   background-color: var(--accent-color);
   fill: var(--icons-color);
+
+  transition-property: fill, background-color;
+  transition-duration: 250ms, 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon:hover, 
 .icon:focus {
-  background-color: var(--nav-color);
   fill: var(--accent-color);
+  background-color: var(--nav-color);
 }
 
 /* CLIENTS */
@@ -501,6 +555,10 @@ background-color: var(--accent-color);
   width: 170px;
   height: 92px;
   fill: var(--icons-color);
+
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-item:not(:last-child) {
@@ -516,6 +574,10 @@ background-color: var(--accent-color);
   padding: 0;
   width: 106px;
   height: 60px;
+
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients:hover,
@@ -553,6 +615,10 @@ background-color: var(--accent-color);
   color: var(--adress-color);
   font-size: 14px;
   line-height: 1.7;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .link-footer.address {
@@ -590,12 +656,16 @@ color: #FFFFFF;
   height: 44px;
   background-color: rgba(255, 255, 255, 0.1);
   fill: var(--accent-color);
+
+  transition-property: fill, background-color;
+  transition-duration: 250ms, 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-footer:hover,
 .icon-footer:focus {
-  background-color: var(--nav-color);
   fill: var(--accent-color);
+  background-color: var(--nav-color);
 }
 
 /* PORTFOLIO */
@@ -617,22 +687,18 @@ color: #FFFFFF;
 .button-project {
   padding: 6px 22px;
   border-radius: 4px;
-}
 
-.button-project {
-  background-color: var(--third-color);
-}
-
-button-project {
-  color: var(--main-color);
-}
-
-.button-project {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.6;
   text-align: center;
   letter-spacing: 0.03em;
+  color: var(--main-color);
+  background-color: var(--third-color);
+
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 250ms, 250ms, 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-project:hover,
@@ -640,7 +706,6 @@ button-project {
   color: var(--accent-color);
   background-color: var(--nav-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
 }
 
 .list.projects {
@@ -689,39 +754,52 @@ button-project {
   letter-spacing: 0.03em;
 }
 
-.ptoject:hover {
-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+.project {
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project:hover{
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
 .card-navigation {
   position: relative;
-  /* overflow: hidden; */
-
+  overflow: hidden;
 }
-
-/* .picture::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(33, 150, 243, 0.9);
-  transform: translateY(100%);
-  transition: transform 250ms linear;
-} */
 
 .picture:hover:after {
   transform: translateY(0);
 }
 
 .text-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  bottom: 0;
   background-color: rgba(33, 150, 243, 0.9);
   transform: translateY(100%);
-  transition: transform 250ms linear;
+
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project:hover .text-navigation{
+  transform: translate(0);
+}
+
+.text-navigation .text {
+  padding: 63px 24px;
+  color: var(--accent-color);
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
 }
