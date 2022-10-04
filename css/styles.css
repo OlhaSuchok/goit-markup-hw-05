@@ -183,7 +183,17 @@ button {
 .portfolio,
 .contacts {
   position: relative;
-  padding-bottom: 28px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.studio,
+.portfolio {
+  margin-right: 50px;
+}
+
+.contacts {
+  margin-right: 318px;
 }
 
 .studio:hover,
@@ -195,16 +205,21 @@ button {
   color: var(--nav-color);
 }
 
+.site-nav {
+  display: flex;
+  align-items: center;
+}
+
+
+/* 
 .nav {
   display: flex;
   margin-right: 318px;
-  padding-top: 32px;
-  padding-bottom: 32px;
-}
-
+} */
+/* 
 .nav li:not(:last-child) {
   margin-right: 50px;
-}
+} */
 
 .auth-nav {
   display: flex;
